@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Rekisteröidy</title>
+  <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+  
+  <form action="register.php" method="post">
+    <label>Nimi:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Sähköposti:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Salasana:</label><br>
+    <input type="password" name="password" required><br><br>
+    <label>Salasana uudelleen:</label><br>
+    <input type="password" name="password_confirm" required><br><br>
+
+    <button type="submit">Rekisteröidy</button>
+  </form>
+</body>
+</html>
