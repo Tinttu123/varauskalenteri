@@ -5,21 +5,47 @@
   <title>Rekisteröidy</title>
   <link rel="stylesheet" href="public/css/style.css">
 </head>
+
 <body>
-  
-  <form action="register.php" method="post">
-    <label>Nimi:</label><br>
-    <input type="text" name="name" required><br><br>
+   <!-- Yläpalkki kolmella painikkeella -->
+    <header>
+        <a href="../register.html">
+            <span class="nav-icon">📝</span>
+            Rekisteröidy
+        </a>
+        <a href="#login">
+            <span class="nav-icon">🔑</span>
+            Kirjaudu
+        </a>
+        <a href="#calendar">
+            <span class="nav-icon">📅</span>
+            Varauskalenteri
+        </a>
+    </header>
 
-    <label>Sähköposti:</label><br>
-    <input type="email" name="email" required><br><br>
+   <!-- Pääsisältö -->
+    <main>
+        <div class="content">
 
-    <label>Salasana:</label><br>
-    <input type="password" name="password" required><br><br>
-    <label>Salasana uudelleen:</label><br>
-    <input type="password" name="password_confirm" required><br><br>
+          <form action="register.php" method="post">
+            <label>Nimi:</label><br>
+            <input type="text" name="name" required><br><br>
 
-    <button type="submit">Rekisteröidy</button>
-  </form>
+            <label>Sähköposti:</label><br>
+            <input type="email" name="email" required><br><br>
+
+            <label>Salasana:</label><br>
+            <input type="password" name="password" required><br><br>
+            <label>Salasana uudelleen:</label><br>
+            <input type="password" name="password_confirm" required><br><br>
+
+            <button type="submit">Rekisteröidy</button>
+          </form>
+        </div>
+    </main>
+      <!-- Footer -->
+    <footer>
+        © 2025 TinData 
+    </footer>
 </body>
 </html>

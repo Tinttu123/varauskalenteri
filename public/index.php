@@ -1,9 +1,13 @@
 <?php
+// Suoritetaan projektin alustusskripti.
+require_once '../src/init.php';
 
   // Siistitään polku urlin alusta ja mahdolliset parametrit urlin lopusta.
   // Siistimisen jälkeen osoite /~koodaaja/lanify/tapahtuma?id=1 on 
   // lyhentynyt muotoon /tapahtuma.
-  $request = str_replace('/~p33576/varauskalenteri','',$_SERVER['REQUEST_URI']);
+ // $request = str_replace('/~p33576/varauskalenteri','',$_SERVER['REQUEST_URI']);
+  $request = str_replace($config['urls']['baseUrl'],'',$_SERVER['REQUEST_URI']);
+
   $request = strtok($request, '?');
 
   // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava 
@@ -25,7 +29,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobiilipohja</title>
+    <title>Varauskalenteri</title>
     <!-- Linkitetään ulkoinen CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
