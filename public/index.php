@@ -11,7 +11,7 @@ require_once '../src/init.php';
   $request = strtok($request, '?');
 
   // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava 
-  // käsittelijä.
+  /* käsittelijä.
   if ($request === '/' || $request === '/tapahtumat') {
     echo '<h1>Kaikki tapahtumat</h1>';
   } else if ($request === '/tapahtuma') {
@@ -19,7 +19,7 @@ require_once '../src/init.php';
   } else {
     echo '<h1>Pyydettyä sivua ei löytynyt :(</h1>';
   }
-
+*/
 
   
 ?> 
@@ -39,7 +39,7 @@ require_once '../src/init.php';
 
     <!-- Yläpalkki kolmella painikkeella -->
     <header>
-        <a href="../register.html">
+        <a href="register.php">
             <span class="nav-icon">📝</span>
             Rekisteröidy
         </a>

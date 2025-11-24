@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7375748d781877de73102dc84ef3f5f8
+class ComposerStaticInit22fc3d6b293a1dc53c780b0ee032528c
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
@@ -30,14 +30,39 @@ class ComposerStaticInit7375748d781877de73102dc84ef3f5f8
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'League\\Plates\\Engine' => __DIR__ . '/..' . '/league/plates/src/Engine.php',
+        'League\\Plates\\Exception\\TemplateNotFound' => __DIR__ . '/..' . '/league/plates/src/Exception/TemplateNotFound.php',
+        'League\\Plates\\Extension\\Asset' => __DIR__ . '/..' . '/league/plates/src/Extension/Asset.php',
+        'League\\Plates\\Extension\\ExtensionInterface' => __DIR__ . '/..' . '/league/plates/src/Extension/ExtensionInterface.php',
+        'League\\Plates\\Extension\\URI' => __DIR__ . '/..' . '/league/plates/src/Extension/URI.php',
+        'League\\Plates\\Template\\Data' => __DIR__ . '/..' . '/league/plates/src/Template/Data.php',
+        'League\\Plates\\Template\\Directory' => __DIR__ . '/..' . '/league/plates/src/Template/Directory.php',
+        'League\\Plates\\Template\\FileExtension' => __DIR__ . '/..' . '/league/plates/src/Template/FileExtension.php',
+        'League\\Plates\\Template\\Folder' => __DIR__ . '/..' . '/league/plates/src/Template/Folder.php',
+        'League\\Plates\\Template\\Folders' => __DIR__ . '/..' . '/league/plates/src/Template/Folders.php',
+        'League\\Plates\\Template\\Func' => __DIR__ . '/..' . '/league/plates/src/Template/Func.php',
+        'League\\Plates\\Template\\Functions' => __DIR__ . '/..' . '/league/plates/src/Template/Functions.php',
+        'League\\Plates\\Template\\Name' => __DIR__ . '/..' . '/league/plates/src/Template/Name.php',
+        'League\\Plates\\Template\\ResolveTemplatePath' => __DIR__ . '/..' . '/league/plates/src/Template/ResolveTemplatePath.php',
+        'League\\Plates\\Template\\ResolveTemplatePath\\NameAndFolderResolveTemplatePath' => __DIR__ . '/..' . '/league/plates/src/Template/ResolveTemplatePath/NameAndFolderResolveTemplatePath.php',
+        'League\\Plates\\Template\\ResolveTemplatePath\\ThemeResolveTemplatePath' => __DIR__ . '/..' . '/league/plates/src/Template/ResolveTemplatePath/ThemeResolveTemplatePath.php',
+        'League\\Plates\\Template\\Template' => __DIR__ . '/..' . '/league/plates/src/Template/Template.php',
+        'League\\Plates\\Template\\Theme' => __DIR__ . '/..' . '/league/plates/src/Template/Theme.php',
+        'PHPMailer\\PHPMailer\\DSNConfigurator' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/DSNConfigurator.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\OAuthTokenProvider' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuthTokenProvider.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7375748d781877de73102dc84ef3f5f8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7375748d781877de73102dc84ef3f5f8::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7375748d781877de73102dc84ef3f5f8::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit22fc3d6b293a1dc53c780b0ee032528c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit22fc3d6b293a1dc53c780b0ee032528c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit22fc3d6b293a1dc53c780b0ee032528c::$classMap;
 
         }, null, ClassLoader::class);
     }
