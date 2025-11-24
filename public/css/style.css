@@ -105,8 +105,11 @@ p {
     color: #333;              /* tumma harmaa teksti */
     text-decoration: none;
     border-radius: 4px;       /* vähemmän pyöristystä */
-    font-size: 12px;          /* pienempi fontti */
+    font-size: 14px;          /* pienempi fontti */
     margin-top: 10px;
+      cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* kevyt varjo */
+  transition: all 0.2s ease; /* sulava muutos */
 }
 header a {
     flex: 1;
@@ -129,3 +132,65 @@ header a:hover {
     border-radius: 6px;        /* pieni pyöristys hoverilla */
 }
 
+/* Kaikki tekstikentät ja salasanakentät */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+       /* vie koko rivin leveyden */
+  max-width: 400px;   /* halutessasi rajoita maksimileveys */
+  padding: 10px;      /* sisäiset marginaalit, tekee kentästä “paksumman” */
+  font-size: 16px;    /* isompi teksti */
+  margin-bottom: 15px;/* väli kenttien väliin */
+  box-sizing: border-box;
+}
+
+/* Submit-painikkeen tyyli */
+button[type="submit"] {
+  font-size: 18px;        /* isompi teksti */
+  padding: 14px 28px;     /* lisää korkeutta ja leveyttä */
+  border-radius: 6px;     /* pyöristetyt kulmat */
+  background-color: #4CAF50; /* vihreä tausta */
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* kevyt varjo */
+  transition: all 0.2s ease;
+}
+
+/* Hover-tila */
+button[type="submit"]:hover {
+  background-color: #45a049; /* hieman tummempi vihreä */
+}
+
+/* Active-tila (painettaessa) */
+button[type="submit"]:active {
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3); /* syvempi varjo */
+  transform: scale(0.97); /* pieni painallusanimaatio */
+}
+
+/* Viestien paikka formin alla */
+.form-messages {
+  min-height: 30px;       /* varaa tilaa viestille vaikka sitä ei olisi */
+  margin-top: 10px;       /* pieni väli lomakkeesta */
+  text-align: center;     /* keskitetty teksti */
+}
+
+/* Virheviesti */
+.error-message {
+  color: #b00020;          /* punainen teksti */
+  background-color: #fdd;  /* vaaleanpunainen tausta */
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Onnistumisviesti */
+.success-message {
+  color: #0a662e;          /* vihreä teksti */
+  background-color: #dff0d8; /* vaaleanvihreä tausta */
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

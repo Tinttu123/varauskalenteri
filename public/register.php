@@ -9,18 +9,19 @@ $dsn  = "pgsql:host=localhost;dbname=p33576";
 $user = "p33576";
 $pass = "uusi_salasana";
 
+$error = null;
+$success = null;
+
 try {
     $pdo = new PDO($dsn, $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
 } catch (PDOException $e) {
-    $_SESSION['error'] = "Tietokantayhteys epäonnistui: " . $e->getMessage();
-    header("Location: register.php");
-    exit;
+    $error = "Tietokantayhteys epäonnistui: " . htmlspecialchars($e->getMessage());
 }
 
 /* 📝 Lomakkeen käsittely */
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
     $name             = $_POST['name'] ?? '';
     $email            = $_POST['email'] ?? '';
     $password         = $_POST['password'] ?? '';
@@ -30,58 +31,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
     $stmt->execute([$email]);
     if ($stmt->fetch()) {
-        $_SESSION['error'] = "Sähköposti $email on jo rekisteröity. Kirjaudu sisään tai käytä toista osoitetta.";
-        header("Location: register.php");
-        exit;
+        $error = "Sähköposti $email on jo rekisteröity. Kirjaudu sisään tai käytä toista osoitetta.";
     }
 
     // Tarkista salasanat
-    if ($password !== $password_confirm) {
-        $_SESSION['error'] = "Salasanat eivät täsmää. Yritä uudelleen.";
-        header("Location: register.php");
-        exit;
+    if (!$error && $password !== $password_confirm) {
+        $error = "Salasanat eivät täsmää. Yritä uudelleen.";
     }
 
-    // Hashaa salasana ja luo vahvistuskoodi
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $code = bin2hex(random_bytes(16));
+    if (!$error) {
+        // Hashaa salasana ja luo vahvistuskoodi
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $code = bin2hex(random_bytes(16));
 
-    // Lisää käyttäjä
-    $sql = "INSERT INTO users (name, email, password, role, is_verified, verification_code) 
-            VALUES (?, ?, ?, 'student', false, ?)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$name, $email, $hashedPassword, $code]);
+        // Lisää käyttäjä
+        $sql = "INSERT INTO users (name, email, password, role, is_verified, verification_code) 
+                VALUES (?, ?, ?, 'student', false, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$name, $email, $hashedPassword, $code]);
 
-    // Lähetä sähköposti
-    $mail = new PHPMailer(true);
-    try {
-        $mail->CharSet = "UTF-8";
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'tintun.data@gmail.com';
-        $mail->Password = 'abel akhv inwr jcol'; // App password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+        // Lähetä sähköposti
+        $mail = new PHPMailer(true);
+        try {
+            $mail->CharSet = "UTF-8";
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'tintun.data@gmail.com';
+            $mail->Password = 'abel akhv inwr jcol'; // App password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
-        $mail->setFrom('tintun.data@gmail.com', 'Varauskalenteri');
-        $mail->addAddress($email);
-        $mail->Subject = 'Vahvista sähköpostisi';
-        $mail->Body    = "Hei $name,\n\nKlikkaa linkkiä vahvistaaksesi tilisi:\n".
-                         "https://neutroni.hayo.fi/~p33576/varauskalenteri/public/verify.php?code=$code";
+            $mail->setFrom('tintun.data@gmail.com', 'Varauskalenteri');
+            $mail->addAddress($email);
+            $mail->Subject = 'Vahvista sähköpostisi';
+            $mail->Body    = "Hei $name,\n\nKlikkaa linkkiä vahvistaaksesi tilisi:\n".
+                             "https://neutroni.hayo.fi/~p33576/varauskalenteri/public/verify.php?code=$code";
 
-        $mail->send();
-        $_SESSION['success'] = "Rekisteröinti onnistui! Tarkista sähköpostisi vahvistusta varten.";
-        header("Location: register.php");
-        exit;
-    } catch (Exception $e) {
-        $_SESSION['error'] = "Sähköpostin lähetys epäonnistui: {$mail->ErrorInfo}";
-        header("Location: register.php");
-        exit;
+            $mail->send();
+            $success = "Rekisteröinti onnistui! Tarkista sähköpostisi vahvistusta varten.";
+        } catch (Exception $e) {
+            $error = "Sähköpostin lähetys epäonnistui: " . htmlspecialchars($mail->ErrorInfo);
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -89,28 +83,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>Rekisteröidy</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 <body>
   <header>
     <a href="register.php"><span class="nav-icon">📝</span> Rekisteröidy</a>
-    <a href="#login"><span class="nav-icon">🔑</span> Kirjaudu</a>
-    <a href="#calendar"><span class="nav-icon">📅</span> Varauskalenteri</a>
+    <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu</a>
+    <a href="calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
   </header>
 
   <main>
     <div class="content">
-      <?php
-      if (isset($_SESSION['error'])) {
-          echo "<p style='color:red'>" . $_SESSION['error'] . "</p>";
-          unset($_SESSION['error']);
-      }
-      if (isset($_SESSION['success'])) {
-          echo "<p style='color:green'>" . $_SESSION['success'] . "</p>";
-          unset($_SESSION['success']);
-      }
-      ?>
-
+      <div class="form-messages">
+      <?php if ($error): ?>
+            <p style="color:red"><?= $error ?></p>
+            <?php endif; ?>
+            <?php if ($success): ?>
+            <p style="color:green"><?= $success ?></p>
+            <?php endif; ?>
+       </div>
       <form action="register.php" method="post">
         <label>Nimi:</label><br>
         <input type="text" name="name" required><br><br>
@@ -126,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit">Rekisteröidy</button>
       </form>
+     
     </div>
   </main>
 

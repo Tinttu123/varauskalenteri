@@ -19,12 +19,8 @@ require_once '../src/init.php';
   } else {
     echo '<h1>Pyydettyä sivua ei löytynyt :(</h1>';
   }
-*/
-
-  
+*/ 
 ?> 
-
-
 
 <!DOCTYPE html>
 <html lang="fi">
@@ -43,11 +39,11 @@ require_once '../src/init.php';
             <span class="nav-icon">📝</span>
             Rekisteröidy
         </a>
-        <a href="#login">
+        <a href="login.php">
             <span class="nav-icon">🔑</span>
             Kirjaudu
         </a>
-        <a href="#calendar">
+        <a href="calendar.php">
             <span class="nav-icon">📅</span>
             Varauskalenteri
         </a>
