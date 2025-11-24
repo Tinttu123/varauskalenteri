@@ -24,10 +24,8 @@ $slots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <title>Varauskalenteri</title>
-  <!-- Yleiset tyylit -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Kalenterin omat tyylit -->
-  <link rel="stylesheet" href="css/calendar.css">
+   <link rel="stylesheet" href="css/calendar.css">   <!-- kalenterin omat tyylit -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -40,7 +38,7 @@ $slots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   <main>
     <div class="content">
       <h2>Vapaat ajat</h2>
-      <table class="calendar-table">
+      <table border="1">
         <tr><th>Aloitus</th><th>Lopetus</th><th>Toiminto</th></tr>
         <?php foreach ($slots as $slot): ?>
           <tr>

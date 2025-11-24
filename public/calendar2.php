@@ -24,11 +24,55 @@ $slots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <title>Varauskalenteri</title>
-  <!-- Yleiset tyylit -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Kalenterin omat tyylit -->
-  <link rel="stylesheet" href="css/calendar.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Kalenterin tyylit */
+    .calendar-table {
+      width: 100%;
+      max-width: 800px;
+      border-collapse: collapse;
+      margin: 20px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .calendar-table th {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-size: 16px;
+    }
+    .calendar-table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      font-size: 15px;
+    }
+    .calendar-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .calendar-table button {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .calendar-table button:hover {
+      background-color: #1976D2;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 80px;
+      font-size: 28px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
   <header>
