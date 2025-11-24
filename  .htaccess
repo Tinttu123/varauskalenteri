@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+
+# Jos pyyntö ei jo mene public-kansioon
+RewriteCond %{REQUEST_URI} !^/public/
+
+# Ohjaa kaikki pyynnöt public-kansioon
+RewriteRule ^(.*)$ public/$1 [L]
