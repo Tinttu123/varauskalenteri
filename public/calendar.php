@@ -43,14 +43,28 @@ $slots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
       <table class="calendar-table">
         <tr><th>Aloitus</th><th>Lopetus</th><th>Toiminto</th></tr>
         <?php foreach ($slots as $slot): ?>
+          <?php
+              $start = new DateTime($slot['start_time']);
+              $end   = new DateTime($slot['end_time']);
+              ?>
+              <tr>
+              <td><?= htmlspecialchars($start->format('d.m.Y \k\l\o: H:i')) ?></td>
+              <td><?= htmlspecialchars($end->format('d.m.Y \k\l\o: H:i')) ?></td>
+              <td>
+                <form action="book.php" method="post">
+                  <input type="hidden" name="slot_id" value="<?= $slot['id'] ?>">
+                  <button type="submit">Varaa</button>
+                </form>
+<!--
           <tr>
-            <td><?= htmlspecialchars($slot['start_time']) ?></td>
-            <td><?= htmlspecialchars($slot['end_time']) ?></td>
+            <td><!?= htmlspecialchars($slot['start_time']) ?></td>
+            <td><!?= htmlspecialchars($slot['end_time']) ?></td>
             <td>
               <form action="book.php" method="post">
-                <input type="hidden" name="slot_id" value="<?= $slot['id'] ?>">
+                <input type="hidden" name="slot_id" value="<!?= $slot['id'] ?>">
                 <button type="submit">Varaa</button>
-              </form>
+              </form> 
+-->
             </td>
           </tr>
         <?php endforeach; ?>
