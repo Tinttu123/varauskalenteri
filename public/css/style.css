@@ -147,7 +147,7 @@ input[type="password"] {
 /* Submit-painikkeen tyyli */
 button[type="submit"] {
   font-size: 18px;        /* isompi teksti */
-  padding: 14px 28px;     /* lisää korkeutta ja leveyttä */
+  padding: 10px 24px;     /* lisää korkeutta ja leveyttä */
   border-radius: 6px;     /* pyöristetyt kulmat */
   background-color: #4CAF50; /* vihreä tausta */
   color: white;
@@ -194,3 +194,35 @@ button[type="submit"]:active {
   font-size: 15px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* kaksi yhtä leveää saraketta */
+  
+ 
+}
+.calendar {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background: #eee;
+}
+
+form {
+  display: inline;
+}
+

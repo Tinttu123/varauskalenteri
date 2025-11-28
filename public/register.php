@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
   <header>
     <a href="register.php"><span class="nav-icon">📝</span> Rekisteröidy</a>
     <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu</a>
-    <a href="calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
+    <a href="#calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
   </header>
 
   <main>

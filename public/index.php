@@ -39,11 +39,17 @@ require_once '../src/init.php';
             <span class="nav-icon">📝</span>
             Rekisteröidy
         </a>
-        <a href="login.php">
-            <span class="nav-icon">🔑</span>
-            Kirjaudu
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- Käyttäjä kirjautunut -->
+            <a href="logout.php"><span class="nav-icon">🚪</span> Kirjaudu ulos</a>
+        <?php else: ?>
+            <!-- Käyttäjä ei kirjautunut -->
+            <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu sisään</a>
+        <?php endif; ?>
+       
         </a>
-        <a href="calendar.php">
+        <a href="#calendar.php">
             <span class="nav-icon">📅</span>
             Varauskalenteri
         </a>
@@ -53,10 +59,10 @@ require_once '../src/init.php';
     <main>
         <div class="content">
             <h1>VARAUSKALENTERI</h1>
-            <p>Kirjaudu tai reksiteröidy. Tervetuloa!</p>
+            <p>Kirjaudu tai reksiteröidy. </p>
             <hr>
-            Pääkäyttäjä voi kirjautua 
-            <a href="#" class="btn">tästä.</a>
+            <h2>Tervetuloa!</h2>
+            
         </div>
     </main>
 

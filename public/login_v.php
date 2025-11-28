@@ -31,13 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['role']    = $row['role'];
             $_SESSION['success'] = "Kirjautuminen onnistui!";
-
-            // ohjaus roolin mukaan
-            if ($row['role'] === 'admin') {
-                header("Location: add_slot.php");
-            } else {
-                header("Location: calendar.php");
-            }
+            header("Location: calendar.php"); // ohjaa kalenteriin
             exit;
         } else {
             $_SESSION['error'] = "Vahvista ensin sähköpostisi ennen kirjautumista.";
@@ -65,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <a href="register.php"><span class="nav-icon">📝</span> Rekisteröidy</a>
     <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu</a>
     
-    <a href="calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
+    <a href="#calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
   </header>
 
   <main>

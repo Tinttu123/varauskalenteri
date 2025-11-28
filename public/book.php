@@ -15,5 +15,8 @@ $stmt->execute([$slot_id, $user_id]);
 
 $pdo->prepare("UPDATE slots SET is_booked = true WHERE id = ?")->execute([$slot_id]);
 
-echo "Aika varattu.";
+// ohjataan reservations.php-sivulle
+header("Location: reservations.php");
+exit;
+
 ?>

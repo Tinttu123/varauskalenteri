@@ -1,0 +1,47 @@
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* vasen 1 osa, oikea 2 osaa */
+  gap: 30px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+.add-slot, .slot-list {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.add-slot h2, .slot-list h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-table th, .calendar-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.calendar-table th {
+  background: #eee;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  background: #53b7ff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e90ff;
+}
