@@ -1,5 +1,11 @@
 <?php
 session_start();
+session_start();
+
+// Vain adminilla oikeus
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    exit("Ei oikeuksia.");
+}
 
 $dsn  = "pgsql:host=localhost;dbname=p33576";
 $user = "p33576";
@@ -35,20 +41,55 @@ $reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
  
   <link rel="stylesheet" href="css/calendar.css">
   <link rel="stylesheet" href="css/slots.css">
-  
+  <style>
+    /* Taulukon ympärille scrollaava kontti */
+.responsive-table {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Taulukko skaalautuu ja rivit katkeavat tarvittaessa */
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  word-wrap: break-word;
+}
+
+.calendar th, .calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  min-width: 100px; /* pakottaa solut pysymään kapeina */
+}
+
+/* Kellonajan tyyli */
+.time {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Mobiilissa pienennetään fonttia ja paddingia */
+@media (max-width: 600px) {
+  .calendar th, .calendar td {
+    font-size: 14px;
+    padding: 6px;
+  }
+}
+</style>
 </head>
 <body>
   <header>
 
 
-  <a href="reservations.php"><span class="nav-icon">🧾</span>Varaukset</a>
+  <a href="add_slot.php"><span class="nav-icon">🛠️</span>Admin</a>
     
     <?php if (isset($_SESSION['user_id'])): ?>
       <a href="logout.php"><span class="nav-icon">🚪</span> Kirjaudu ulos</a>
     <?php else: ?>
       <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu sisään</a>
     <?php endif; ?>
-    <a href="calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
+     <a href="varaa.php"><span class="nav-icon">✏️</span> Varaa aika</a>
   </header>
 
   <main>
@@ -56,7 +97,13 @@ $reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     <?php if (empty($reservations)): ?>
       <p>Ei varauksia.</p>
     <?php else: ?>
-      <table class="reserved-table">
+
+
+<div class="responsive-table">
+
+
+
+      <table class ="calendar">
         <tr>
           <th>Varaus ID</th>
           <th>Aloitus</th>
@@ -78,6 +125,7 @@ $reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
           </tr>
         <?php endforeach; ?>
       </table>
+        </div>
     <?php endif; ?>
   </main>
 

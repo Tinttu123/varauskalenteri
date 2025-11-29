@@ -88,7 +88,7 @@ $allSlots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     <?php else: ?>
       <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu sisään</a>
     <?php endif; ?>
-    <a href="#calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
+    <a href="varaa.php"><span class="nav-icon">✏️</span> Varaa aika</a>
   </header>
 
   <h2>Admin</h2>
