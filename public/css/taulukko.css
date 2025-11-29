@@ -1,0 +1,34 @@
+/* Taulukon ympärille scrollaava kontti */
+.responsive-table {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Taulukko skaalautuu ja rivit katkeavat tarvittaessa */
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  word-wrap: break-word;
+}
+
+.calendar th, .calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  min-width: 100px; /* pakottaa solut pysymään kapeina */
+}
+
+/* Kellonajan tyyli */
+.time {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Mobiilissa pienennetään fonttia ja paddingia */
+@media (max-width: 600px) {
+  .calendar th, .calendar td {
+    font-size: 14px;
+    padding: 6px;
+  }
+}

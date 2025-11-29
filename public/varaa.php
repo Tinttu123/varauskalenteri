@@ -39,6 +39,7 @@ $slots = $pdo->query("SELECT id, start_time, end_time FROM slots WHERE is_booked
   <meta charset="UTF-8">
   <title>Admin: Varaa aika</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/taulukko.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <style>
