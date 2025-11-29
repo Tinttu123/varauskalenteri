@@ -45,6 +45,7 @@ $allSlots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   <title>Lisää aika</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/slots.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     .add-slot, .slot-table {
@@ -81,7 +82,7 @@ $allSlots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
   <header>
-    <a href="#register.php"><span class="nav-icon">📝</span> Rekisteröidy</a>
+     <a href="reserved.php"><span class="nav-icon">🧾</span>Varatut ajat</a>
     <?php if (isset($_SESSION['user_id'])): ?>
       <a href="logout.php"><span class="nav-icon">🚪</span> Kirjaudu ulos</a>
     <?php else: ?>

@@ -71,3 +71,20 @@ h2 {
   }
 }
 
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .calendar-table th, .calendar-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+   
+    .time {
+      font-weight: bold;
+      margin-left: 12px; /* lisää väliä päivämäärän ja kellonajan väliin */
+    }
+    form { display:inline; }
+

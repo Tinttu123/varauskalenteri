@@ -48,6 +48,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omat varaukset</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calendar.css">
 
 </head>
 <body>

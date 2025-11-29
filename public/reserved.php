@@ -32,29 +32,22 @@ $reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   <title>Varatut ajat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .reserved-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    .reserved-table th, .reserved-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-    .reserved-table th {
-      background: #eee;
-    }
-    .time {
-      font-weight: bold;
-      margin-left: 12px;
-    }
-  </style>
+ 
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/slots.css">
+  
 </head>
 <body>
   <header>
-    <a href="reservations.php"><span class="nav-icon">🧾</span> Omat varaukset</a>
+
+
+  <a href="reservations.php"><span class="nav-icon">🧾</span>Varaukset</a>
+    
+    <?php if (isset($_SESSION['user_id'])): ?>
+      <a href="logout.php"><span class="nav-icon">🚪</span> Kirjaudu ulos</a>
+    <?php else: ?>
+      <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu sisään</a>
+    <?php endif; ?>
     <a href="calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
   </header>
 

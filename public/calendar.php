@@ -39,32 +39,15 @@ $slots = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Varauskalenteri</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .calendar-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    .calendar-table th, .calendar-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-    .calendar-table th {
-      background: #eee;
-    }
-    .time {
-      font-weight: bold;
-      margin-left: 12px; /* lisää väliä päivämäärän ja kellonajan väliin */
-    }
-    form { display:inline; }
-  </style>
+  <link rel="stylesheet" href="css/calendar.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <header>
     <a href="reservations.php"><span class="nav-icon">🧾</span> Omat varaukset</a>
     <a href="logout.php"><span class="nav-icon">🚪</span> Kirjaudu ulos</a>
     <a href="calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
+
   </header>
 
   <main>
