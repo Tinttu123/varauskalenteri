@@ -21,6 +21,7 @@ $stmt->execute([$code]);
     <title>Sähköposti vahvistettu</title>
     <!-- Linkitetään ulkoinen CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calendar.css">
 </head>
 <body>
 
@@ -30,7 +31,7 @@ $stmt->execute([$code]);
             <span class="nav-icon">📝</span>
             Rekisteröidy
         </a>
-        <a href="#login">
+        <a href="login.php">
             <span class="nav-icon">🔑</span>
             Kirjaudu
         </a>
