@@ -90,6 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit">Kirjaudu</button>
       </form>
+      <p><a href="forgot_password.php">Unohditko salasanan?</a></p>
+
     </div>
   </main>
 
