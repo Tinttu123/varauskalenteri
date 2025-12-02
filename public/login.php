@@ -89,7 +89,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" name="password" required><br><br>
 
         <button type="submit">Kirjaudu</button>
+        <p>
       </form>
+      <hr>
       <p><a href="forgot_password.php">Unohditko salasanan?</a></p>
 
     </div>

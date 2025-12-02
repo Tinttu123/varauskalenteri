@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Lähetä sähköposti (tässä vain esimerkki)
         mail($email, "Salasanan resetointi", 
-             "Klikkaa linkkiä: http://localhost/reset_password.php?token=$token");
+             "Klikkaa linkkiä: https://neutroni.hayo.fi/~p33576/varauskalenteri/public/reset_password.php?token=$token");
 
         $_SESSION['success'] = "Resetointilinkki lähetetty sähköpostiin.";
     } else {
