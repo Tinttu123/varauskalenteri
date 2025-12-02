@@ -57,8 +57,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Salasanan resetointi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
 </head>
 <body>
+<header>
+    <a href="register.php"><span class="nav-icon">📝</span> Rekisteröidy</a>
+    <a href="login.php"><span class="nav-icon">🔑</span> Kirjaudu</a>
+    
+    <a href="#calendar.php"><span class="nav-icon">📅</span> Varauskalenteri</a>
+</header>
+
     <?php
     // Näytetään istunto-viestit
     if (!empty($_SESSION['error'])) {
@@ -70,7 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($_SESSION['success']);
     }
     ?>
-
+<main>
+    <div class="content">
     <h2>Anna uusi salasana</h2>
     <form method="post">
         <label>Uusi salasana:</label><br>
@@ -81,6 +94,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit">Vaihda salasana</button>
     </form>
+ </div>
+  </main>
+
+  <footer>
+    © 2025 TinData
+  </footer>
 </body>
 </html> 
 	
