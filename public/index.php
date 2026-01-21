@@ -59,7 +59,7 @@ require_once '../src/init.php';
     <main>
         <div class="content">
             <h1>VARAUSKALENTERI</h1>
-            <p>Kirjaudu tai reksiteröidy. </p>
+            <p>Kirjaudu tai rekisteröidy. </p>
             <hr>
             <h2>Tervetuloa!</h2>
             
